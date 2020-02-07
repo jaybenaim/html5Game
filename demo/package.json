@@ -11,8 +11,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "gh-pages": "^2.2.0"
+  },
   "devDependencies": {
     "gh-pages-deploy": "^0.5.1"
-  }
+  },
+  "homepage": "https://jaybenaim.github.io/HTML5Game/"
 }
