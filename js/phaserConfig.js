@@ -119,9 +119,22 @@ function create() {
     setXY: { x: 35, y: 0, stepX: 40 }
   });
 
-  stars.children.iterate(function(child) {
+  stars.children.iterate(function(child, i) {
     child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     child.setBounceX(Phaser.Math.FloatBetween(0.4, 0.8));
+    console.log(i);
+    if (i % 2 === 0) {
+      setInterval(() => {
+        child.body.gravity.x = 50;
+        child.setCollideWorldBounds(true);
+      }, 500);
+      setInterval(() => {
+        child.body.gravity.x = -50;
+        child.body.gravity.y = -300;
+
+        child.setCollideWorldBounds(true);
+      }, 1000);
+    }
     //     setInterval(() => {
     //       child.body.gravity.x = 20;
     //     }, 200);
