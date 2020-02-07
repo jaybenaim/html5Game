@@ -16,7 +16,7 @@ function create() {
     .refreshBody();
   // right
   platforms
-    .create(250, 350, "ground")
+    .create(300, 350, "ground")
     .setScale(0.2)
     .refreshBody();
   // bottom-middle
@@ -26,7 +26,7 @@ function create() {
     .refreshBody();
   // top-right
   platforms
-    .create(250, 60, "ground")
+    .create(250, 105, "ground")
     .setScale(0.2)
     .refreshBody();
   platforms
@@ -74,7 +74,7 @@ function create() {
   // stars
   stars = this.physics.add.group({
     key: "star",
-    repeat: 6,
+    repeat: 11,
     setXY: { x: 35, y: 0, stepX: 40 }
   });
 

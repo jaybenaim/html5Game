@@ -19,6 +19,6 @@ const collectStar = (player, star) => {
     bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
   }
   if (stars.countActive(true) === 2) {
-    CAMERA.scrollY += 100;
+    // CAMERA.scrollY += 100;
   }
 };

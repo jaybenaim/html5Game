@@ -2,11 +2,11 @@ function update() {
   let pointer = game.input.activePointer;
   // TOUCH EVENTS
   if (pointer.isDown) {
-    if (pointer.x <= 156 || cursors.left.isDown) {
+    if (pointer.x <= 225 || cursors.left.isDown) {
       player.setVelocityX(-130);
 
       player.anims.play("left", true);
-    } else if (pointer.x >= 157 || cursors.right.isDown) {
+    } else if (pointer.x >= 226 || cursors.right.isDown) {
       player.setVelocityX(130);
 
       player.anims.play("right", true);
@@ -15,7 +15,7 @@ function update() {
 
       player.anims.play("turn", true);
     }
-    if (pointer.y <= 300 && player.body.touching.down) {
+    if (pointer.y <= 400 && player.body.touching.down) {
       player.setVelocityY(-330);
     }
   } else {
