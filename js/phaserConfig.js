@@ -154,12 +154,11 @@ function create() {
   this.physics.add.collider(bombs, platforms);
 
   this.physics.add.collider(player, bombs, hitBomb, null, this);
-
-  // TOUCH EVENTS
 }
 
 function update() {
   let pointer = game.input.activePointer;
+  // TOUCH EVENTS
   if (pointer.isDown) {
     if (pointer.x <= 156 || cursors.left.isDown) {
       player.setVelocityX(-130);
@@ -178,6 +177,7 @@ function update() {
       player.setVelocityY(-330);
     }
   } else {
+    // ARROW KEYS
     if (cursors.left.isDown) {
       player.setVelocityX(-160);
 
