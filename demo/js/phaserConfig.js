@@ -1,5 +1,5 @@
 $(function() {
-  var config = {
+  const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 800,
@@ -16,12 +16,14 @@ $(function() {
       update: update
     }
   };
+  let score = 0;
+  let scoreText;
 
-  var player;
-  var platforms;
-  var cursors;
+  let player;
+  let platforms;
+  let cursors;
 
-  var game = new Phaser.Game(config);
+  let game = new Phaser.Game(config);
 
   function preload() {
     this.load.image("sky", "assets/sky.png");
@@ -39,23 +41,37 @@ $(function() {
 
     platforms = this.physics.add.staticGroup();
 
+    // floor
     platforms
       .create(400, 568, "ground")
       .setScale(2)
       .refreshBody();
-
-    platforms.create(600, 400, "ground");
-    platforms.create(50, 250, "ground");
-    platforms.create(750, 220, "ground");
+    // left
+    platforms
+      .create(150, 400, "ground")
+      .setScale(0.4)
+      .refreshBody();
+    // top
+    platforms
+      .create(250, 150, "ground")
+      .setScale(0.4)
+      .refreshBody();
+    // right
+    platforms.create(650, 400, "ground");
+    // middle
+    platforms.create(450, 300, "ground");
 
     player = this.physics.add.sprite(100, 450, "dude");
 
-    player.setBounce(0.4);
+    player.setBounce(0.2);
     player.setCollideWorldBounds(true);
 
     this.anims.create({
       key: "left",
-      frames: this.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
+      frames: this.anims.generateFrameNumbers("dude", {
+        start: 0,
+        end: 3
+      }),
       frameRate: 10,
       repeat: -1
     });
@@ -68,7 +84,10 @@ $(function() {
 
     this.anims.create({
       key: "right",
-      frames: this.anims.generateFrameNumbers("dude", { start: 5, end: 8 }),
+      frames: this.anims.generateFrameNumbers("dude", {
+        start: 5,
+        end: 8
+      }),
       frameRate: 10,
       repeat: -1
     });
@@ -77,6 +96,7 @@ $(function() {
 
     this.physics.add.collider(player, platforms);
 
+    // stars
     stars = this.physics.add.group({
       key: "star",
       repeat: 11,
@@ -91,6 +111,13 @@ $(function() {
     this.physics.add.collider(stars, platforms);
 
     this.physics.add.overlap(player, stars, collectStar, null, this);
+
+    // score
+    this.add.image(25, 32, "star");
+    scoreText = this.add.text(45, 16, "0", {
+      fontSize: "32px",
+      fill: "#000"
+    });
   }
 
   function update() {
@@ -115,7 +142,7 @@ $(function() {
 
   function collectStar(player, star) {
     star.disableBody(true, true);
-    const score = $("#score");
-    score.html(Number(score.html()) + 1);
+    score += 1;
+    scoreText.setText(score);
   }
 });
