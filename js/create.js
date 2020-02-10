@@ -1,5 +1,6 @@
 function create() {
   this.add.image(400, 300, "sky");
+  this.add.image(220, 1010, "underground").setScale(0.7);
 
   //  PLATFORMS
   platforms = this.physics.add.staticGroup();

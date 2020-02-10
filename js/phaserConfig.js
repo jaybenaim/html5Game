@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 450,
-  height: 620,
+  width: 430,
+  height: 1900,
   physics: {
     default: "arcade",
     arcade: {
@@ -24,12 +24,10 @@ const hitBomb = (player, bomb) => {
   score -= 1;
   scoreText.setText(score);
 
-  console.log(lives);
   if (lives <= 0) {
     lives = 3;
     player.setTint(0xff0000);
     player.anims.play("turn");
-
     // this.physics.pause();
   }
 };
